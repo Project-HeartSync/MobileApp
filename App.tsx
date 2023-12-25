@@ -1,9 +1,10 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *
+ * npm start
  * @format
  */
+
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
