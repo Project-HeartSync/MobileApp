@@ -8,6 +8,7 @@ import ProfileScreen from './App/Profile';
 import PersonalInfoScreen from './App/PersonalInfo';
 import SettingsScreen from './App/Settings';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -31,14 +32,14 @@ const App = () => {
             let iconName;
 
             if (route.name === 'Home') {
-              iconName = 'archive';
+              iconName = 'home';
             } else if (route.name === 'Medical Records') {
-              iconName = 'medical-bag';
+              iconName = 'folder';
             } else if (route.name === 'Profile') {
-              iconName = 'account';
+              iconName = 'person';
             }
 
-            return <Icon name={iconName} size={size} color={color} />;
+            return <Ionicons name={iconName} size={size} color={color} />;
           },
           "tabBarActiveTintColor": "blue",
           "tabBarInactiveTintColor": "gray",

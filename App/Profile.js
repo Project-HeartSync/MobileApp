@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const ProfileScreen = ({ navigation }) => {
   const user = {
@@ -37,19 +38,16 @@ const ProfileScreen = ({ navigation }) => {
         </View>
       </View>
 
-      {/* Buttons */}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigateToScreen('PersonalInfoScreen')}
-      >
-        <Text style={styles.buttonText}>Personal Info</Text>
+      <TouchableOpacity style={styles.editButton} onPress={() => navigateToScreen('PersonalInfoScreen')}>
+        <Ionicons name="person-circle" size={18} color="#888" style={styles.frontIcon} />
+        <Text style={styles.editText}>Personal Information</Text>
+        <Ionicons name="chevron-forward" size={18} color="#888" style={styles.arrowIcon} />
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigateToScreen('SettingsScreen')}
-      >
-        <Text style={styles.buttonText}>Settings</Text>
+      <TouchableOpacity style={styles.editButton} onPress={() => navigateToScreen('SettingsScreen')}>
+        <Ionicons name="settings" size={18} color="#888" style={styles.frontIcon} />
+        <Text style={styles.editText}>Settings</Text>
+        <Ionicons name="chevron-forward" size={18} color="#888" style={styles.arrowIcon} />
       </TouchableOpacity>
     </View>
   );
@@ -107,17 +105,36 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  editButton: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-  },
   editButtonText: {
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
   },
+  editButton: {
+    backgroundColor: '#FFF',
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#DDD',
+    marginBottom: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: 350,
+  },
+  editText: {
+    fontSize: 14,
+    color: 'black',
+    marginRight: 10,
+    fontFamily: 'Poppins',
+  },
+  arrowIcon: {
+    marginLeft: 'auto',
+    padding: 5
+  },
+  frontIcon: {
+    marginRight: 16
+  }
 });
 
 export default ProfileScreen;
