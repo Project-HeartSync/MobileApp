@@ -18,7 +18,7 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {/* Title */}
-      <Text style={styles.title}>My Profile</Text>
+      <Text style={styles.title}>Profile</Text>
 
       {/* Profile Picture */}
       <Image source={{ uri: user.profileImage }} style={styles.profileImage} />
@@ -46,8 +46,13 @@ const ProfileScreen = ({ navigation }) => {
 
       <TouchableOpacity style={styles.editButton} onPress={() => navigateToScreen('SettingsScreen')}>
         <Ionicons name="settings" size={18} color="#888" style={styles.frontIcon} />
-        <Text style={styles.editText}>Settings</Text>
+        <Text style={styles.editText}>Change Password</Text>
         <Ionicons name="chevron-forward" size={18} color="#888" style={styles.arrowIcon} />
+      </TouchableOpacity>
+
+      {/* Logout button */}
+      <TouchableOpacity style={styles.button} onPress={() => console.log('Logout button pressed!')}>
+        <Text style={styles.buttonText}>Logout</Text>
       </TouchableOpacity>
     </View>
   );
@@ -58,11 +63,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     padding: 20,
+    backgroundColor: '#FFF',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    marginTop: 24,
   },
   profileImage: {
     width: 120,
@@ -94,14 +101,17 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   button: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-    marginVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#c7dede",
+    width: 350,
+    height: 56,
+    marginBottom: 16,
+    borderRadius: 16,
+    position: 'absolute', bottom: 0
   },
   buttonText: {
-    color: 'white',
+    color: 'black',
     fontSize: 16,
     fontWeight: 'bold',
   },

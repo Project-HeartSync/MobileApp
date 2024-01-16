@@ -107,6 +107,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     padding: 20,
+    backgroundColor: '#FFF',
+
   },
   profilePic: {
     width: 120,
@@ -129,13 +131,17 @@ const styles = StyleSheet.create({
     //marginBottom: 16,
   },
   saveButton: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
+    borderColor: "black",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#c7dede",
+    width: 310,
+    height: 56,
+    marginTop: 8,
+    borderRadius: 16,
   },
   saveButtonText: {
-    color: 'white',
+    color: 'black',
     fontSize: 16,
     fontWeight: 'bold',
   },

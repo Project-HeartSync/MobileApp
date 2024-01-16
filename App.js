@@ -16,9 +16,9 @@ const Stack = createStackNavigator();
 const ProfileStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-      <Stack.Screen name="PersonalInfoScreen" component={PersonalInfoScreen} />
-      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+      <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{headerShown: false, headerTitle: ""}}/>
+      <Stack.Screen name="PersonalInfoScreen" component={PersonalInfoScreen} options={{headerTitle: ""}}/>
+      <Stack.Screen name="SettingsScreen" component={SettingsScreen} options={{headerTitle: ""}}/>
     </Stack.Navigator>
   );
 };
@@ -51,9 +51,9 @@ const App = () => {
           ]
       })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Medical Records" component={MedicalRecordsScreen} />
-        <Tab.Screen name="Profile" component={ProfileStack} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
+        <Tab.Screen name="Medical Records" component={MedicalRecordsScreen} options={{headerShown: false}}/>
+        <Tab.Screen name="Profile" component={ProfileStack} options={{headerShown: false}}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
