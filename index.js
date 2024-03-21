@@ -17,7 +17,7 @@ import NotificationsScreen from './App/Notifications';
  import { AppRegistry } from 'react-native';
 import AppWrapper from './App/AppWrapper';
 import { name as appName } from './app.json';
-import { SYNC_CONFIG } from './.sync.config';
+import { SYNC_CONFIG } from './sync.config';
 
 const RootComponent = () => {
   const { enabled, appId } = SYNC_CONFIG;
