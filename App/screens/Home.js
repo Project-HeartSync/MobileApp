@@ -1,16 +1,22 @@
 // screens/HomeScreen.js
 
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'; 
+import { useNavigation } from '@react-navigation/native'; 
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to My Home Screen!</Text>
-      <Button
-        title="Go to Notifications"
-        onPress={() => navigation.navigate('Notifications')}
-      />
+      <TouchableOpacity
+        style={styles.iconButton}
+        onPress={() => navigation.navigate('NotificationsScreen')}
+      >
+        <Ionicons name="notifications-outline" size={24} color="black" />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -26,6 +32,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  iconButton: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    padding: 10,
   },
 });
 

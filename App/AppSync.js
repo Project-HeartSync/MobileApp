@@ -18,6 +18,7 @@ import PersonalInfoScreen from './screens/PersonalInfo';
 import SettingsScreen from './screens/Settings';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons } from '@expo/vector-icons';
+import NotificationsScreen from './screens/Notifications';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -28,6 +29,15 @@ const ProfileStack = () => {
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{headerShown: false, headerTitle: ""}}/>
       <Stack.Screen name="PersonalInfoScreen" component={PersonalInfoScreen} options={{headerTitle: ""}}/>
       <Stack.Screen name="SettingsScreen" component={SettingsScreen} options={{headerTitle: ""}}/>
+    </Stack.Navigator>
+  );
+};
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerShown: false, headerTitle: ""}}/>
+      <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} options={{headerTitle: ""}}/>
     </Stack.Navigator>
   );
 };
@@ -81,7 +91,7 @@ const AppSync = () => {
           ]
       })}
       >
-        <Tab.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
+        <Tab.Screen name="Home" component={HomeStack} options={{headerShown: false}} />
         <Tab.Screen name="Medical Records" component={MedicalRecordsScreen} options={{headerShown: false}}/>
         <Tab.Screen name="Profile" component={ProfileStack} options={{headerShown: false}}/>
       </Tab.Navigator>
