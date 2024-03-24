@@ -1,28 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Pressable } from 'react-native';
-import colors from '../styles/colors';
-//import { shadows } from '../styles/shadows';
-//import { buttonStyles } from '../styles/button';
+import { useNavigation } from '@react-navigation/native'; 
 import { AuthOperationName, useAuth, useEmailPasswordAuth } from '@realm/react';
 
 export const LoginScreen = () => {
+  const navigation = useNavigation();
   const { result, logInWithEmailPassword } = useAuth();
   const { register } = useEmailPasswordAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   useEffect(() => {
-    if (result.success && result.operation === AuthOperationName.Register) {
-      logInWithEmailPassword({ email, password });
+    if (result.error) {
+      setErrorMessage(result.error.message);
     }
-  }, [result, logInWithEmailPassword, email, password]);
+  }, [result]);
 
-  const handleLogin = () => {
-    logInWithEmailPassword({ email, password });
+  const handleLogin = async () => {
+    try {
+      await logInWithEmailPassword({ email, password });
+    } catch (error) {
+      console.log(error);
+      if (error.message.includes('401')) {
+        setErrorMessage('Invalid username or password.'); 
+      } else {
+        console.log('Error logging in:', error); 
+      }
+    }
   };
 
-  const handleRegister = () => {
-    register({ email, password });
+  const navigateToRegister = () => {
+    navigation.navigate('Register'); 
   };
 
   return (
@@ -51,16 +61,12 @@ export const LoginScreen = () => {
           secureTextEntry
         />
       </View>
-      {result?.error?.operation === AuthOperationName.LogInWithEmailPassword && (
-        <Text style={styles.error}>There was an error logging in, please try again</Text>
-      )}
-      {result?.error?.operation === AuthOperationName.Register && (
-        <Text style={styles.error}>There was an error registering, please try again</Text>
-      )}
+  
+      {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
       <TouchableOpacity style={styles.loginBtn} onPress={handleLogin} disabled={result.pending}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleRegister} disabled={result.pending}>
+      <TouchableOpacity onPress={navigateToRegister} disabled={result.pending}>
         <Text style={styles.signupText}>New to HeartSync? Click here to register.</Text>
       </TouchableOpacity>
     </View>
@@ -119,7 +125,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     fontSize: 14,
-    color: colors.white,
+    color: 'red',
   },
   registerBtn: {
     //backgroundColor: '#8a2be2',
