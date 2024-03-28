@@ -10,6 +10,7 @@ import HomeScreen from './screens/Home';
 
 import { RealmProvider } from '@realm/react';
 import { OpenRealmBehaviorType, OpenRealmTimeOutBehavior } from 'realm';
+import AppStack from './AppStack';
 
 const AppWrapper = ({ appId }) => {
   print(appId);
@@ -17,7 +18,7 @@ const AppWrapper = ({ appId }) => {
   return (
     <SafeAreaView style={styles.screen}>
       <AppProvider id={appId}>
-        <UserProvider fallback={<LoginScreen />}>
+        <UserProvider fallback={<AppStack />}>
           <RealmProvider
             schema={schemas}
             sync={{

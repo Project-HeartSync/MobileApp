@@ -8,10 +8,12 @@ import {
   View,
   Button,
 } from "react-native";
+import { Ionicons } from '@expo/vector-icons'; 
+import { useNavigation } from '@react-navigation/native'; 
 import DeviceModal from "./DeviceConnectionModal";
 import useBLE from "./useBLE";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
   const {
     requestPermissions,
     scanForPeripherals,
@@ -21,6 +23,7 @@ const HomeScreen = ({ navigation }) => {
     heartRate,
     disconnectFromDevice,
   } = useBLE();
+  const navigation = useNavigation();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const scanForDevices = async () => {
@@ -40,19 +43,24 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.heartRateTitleWrapper}>
-        {connectedDevice ? (
-          <>
-            <Text style={styles.heartRateTitleText}>Your Heart Rate Is:</Text>
-            <Text style={styles.heartRateText}>{heartRate} bpm</Text>
-          </>
-        ) : (
-          <Text style={styles.heartRateTitleText}>
-            Please Connect to a Heart Rate Monitor
-          </Text>
-        )}
-      </View>
+    <View style={styles.container}>
+      <Text style={styles.text}>Welcome to My Home Screen!</Text>
+      <TouchableOpacity
+        style={styles.iconButton}
+        onPress={() => navigation.navigate('NotificationsScreen')}
+      >
+        <Ionicons name="notifications-outline" size={24} color="black" />
+      </TouchableOpacity>
+      {connectedDevice ? (
+        <>
+          <Text style={styles.heartRateTitleText}>Your Heart Rate Is:</Text>
+          <Text style={styles.heartRateText}>{heartRate} bpm</Text>
+        </>
+      ) : (
+        <Text style={styles.heartRateTitleText}>
+          Please Connect to a Heart Rate Monitor
+        </Text>
+      )}
       <TouchableOpacity
         onPress={connectedDevice ? disconnectFromDevice : openModal}
         style={styles.ctaButton}
@@ -71,7 +79,7 @@ const HomeScreen = ({ navigation }) => {
         title="Go to Notifications"
         onPress={() => navigation.navigate('Notifications')}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
