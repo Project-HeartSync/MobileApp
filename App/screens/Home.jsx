@@ -95,6 +95,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  iconButton: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    padding: 10,
+  },
   heartRateTitleWrapper: {
     flex: 1,
     justifyContent: "center",
