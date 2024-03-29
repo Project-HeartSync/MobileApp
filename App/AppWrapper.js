@@ -6,6 +6,7 @@ import { schemas } from './models';
 import LoginScreen from './screens/Login';
 import colors from './styles/colors';
 import AppSync from './AppSync';
+import HomeScreen from './screens/Home';
 
 import { RealmProvider } from '@realm/react';
 import { OpenRealmBehaviorType, OpenRealmTimeOutBehavior } from 'realm';

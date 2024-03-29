@@ -1,4 +1,28 @@
 {
   "name": "MyTestApp",
-  "displayName": "MyTestApp"
+  "plugins": [
+    [
+      "@config-plugins/react-native-ble-plx",
+      {
+        "isBackgroundEnabled": true,
+        "modes": [
+          "peripheral",
+          "central"
+        ],
+        "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
+      }
+    ],
+    "react-native-ble-plx"
+  ],
+  "android": {
+    "permissions": [
+      "android.permission.BLUETOOTH",
+      "android.permission.BLUETOOTH_ADMIN",
+      "android.permission.BLUETOOTH_CONNECT"
+    ],
+    "package": "com.anonymous.test2"
+  },
+  "ios": {
+    "bundleIdentifier": "com.anonymous.test2"
+  }
 }
