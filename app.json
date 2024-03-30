@@ -1,5 +1,5 @@
 {
-  "name": "MyTestApp",
+  "name": "test2",
   "plugins": [
     [
       "@config-plugins/react-native-ble-plx",
