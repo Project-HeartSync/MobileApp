@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const mlOutputSchema = mongoose.Schema(
     {
         data: {
-            type: [Boolean],
+            type: Boolean,
             required: true,
         },
         // createdAt: {
@@ -16,4 +16,4 @@ const mlOutputSchema = mongoose.Schema(
 
 const MLOutput = mongoose.model('MLOutput', mlOutputSchema);
 
-module.exports = MLOutput;
+export default MLOutput;
