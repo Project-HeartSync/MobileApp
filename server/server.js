@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
 /*eslint linebreak-style: ["error", "windows"]*/
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
@@ -19,7 +20,7 @@ const connectDB = async () => {
     }
 };
 
-const APIrouter = require('./routes.js')
+import APIrouter from './routes.js';
 
 app.use(APIrouter);
 
