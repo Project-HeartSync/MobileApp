@@ -11,9 +11,9 @@ const ecgInputSchema = mongoose.Schema(
         //     required: true,
         // },
     },
-    {timestamps: true},
+    { timestamps: true }
 );
 
 const ECGInput = mongoose.model('ECGInput', ecgInputSchema);
 
-export default ECGInput;
+module.exports = ECGInput;
