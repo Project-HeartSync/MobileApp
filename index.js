@@ -14,7 +14,7 @@ import NotificationsScreen from './App/Notifications';
 // open login screen
  AppRegistry.registerComponent(appName, () => App);*/
 
- import { AppRegistry } from 'react-native';
+import { AppRegistry } from 'react-native';
 import AppWrapper from './App/AppWrapper';
 import { name as appName } from './app.json';
 import { SYNC_CONFIG } from './sync.config';
