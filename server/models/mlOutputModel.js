@@ -11,7 +11,7 @@ const mlOutputSchema = mongoose.Schema(
         //     required: true,
         // },
     },
-    { timestamps: true }
+    {timestamps: true},
 );
 
 const MLOutput = mongoose.model('MLOutput', mlOutputSchema);
