@@ -44,6 +44,11 @@ const DeviceModalListItem: FC<DeviceModalListItemProps> = (props) => {
 const DeviceModal: FC<DeviceModalProps> = (props) => {
   const { devices, visible, connectToPeripheral, closeModal } = props;
 
+  const closeModalFull = useCallback(() => {
+    closeModal();
+  }, [closeModal]);
+
+
   const renderDeviceModalListItem = useCallback(
     (item: ListRenderItemInfo<Device>) => {
       return (
@@ -65,6 +70,14 @@ const DeviceModal: FC<DeviceModalProps> = (props) => {
       visible={visible}
     >
       <SafeAreaView style={modalStyle.modalTitle}>
+        <TouchableOpacity
+          onPress={() => closeModal()}
+          style={modalStyle.iconButton}
+        >
+          <Text>
+            X
+          </Text>
+        </TouchableOpacity>
         <Text style={modalStyle.modalTitleText}>
           Tap on a device to connect
         </Text>
@@ -95,12 +108,24 @@ const modalStyle = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 8,
   },
+  iconButton: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    padding: 10,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    lineHeight: 30,
+  },
   modalTitle: {
     flex: 1,
     backgroundColor: "#f2f2f2",
   },
   modalTitleText: {
-    marginTop: 40,
+    marginTop: 60,
     fontSize: 30,
     fontWeight: "bold",
     marginHorizontal: 20,

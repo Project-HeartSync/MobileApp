@@ -53,11 +53,11 @@ const HomeScreen = () => {
       </TouchableOpacity>
       {connectedDevice ? (
         <>
-          <Text style={styles.heartRateTitleText}>Your Heart Rate Is:</Text>
-          <Text style={styles.heartRateText}>{heartRate} bpm</Text>
+          <Text style={styles.textLight}>Your Heart Rate Is:</Text>
+          <Text style={styles.textLight}>{heartRate} bpm</Text>
         </>
       ) : (
-        <Text style={styles.heartRateTitleText}>
+        <Text style={styles.textLight}>
           Please Connect to a Heart Rate Monitor
         </Text>
       )}
@@ -75,10 +75,6 @@ const HomeScreen = () => {
         connectToPeripheral={connectToDevice}
         devices={allDevices}
       />
-      <Button
-        title="Go to Notifications"
-        onPress={() => navigation.navigate('Notifications')}
-      />
     </View>
   );
 };
@@ -94,6 +90,13 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: 'bold',
+    marginBottom: 20,
+    lineHeight: 30,
+  },
+  textLight: {
+    fontSize: 20,
+    marginBottom: 20,
+    lineHeight: 30,
   },
   iconButton: {
     position: 'absolute',
@@ -125,6 +128,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginBottom: 5,
     borderRadius: 8,
+    padding: 5,
+    paddingHorizontal: 30,
   },
   ctaButtonText: {
     fontSize: 18,
